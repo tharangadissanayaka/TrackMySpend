@@ -30,15 +30,6 @@ The system is designed using a **UML Class Diagram**, which defines:
 
 ---
 
-## 🛠️ Technologies Used
-
-* Programming Language: *(Add your language here, e.g., Java / Python / C#)*
-* Design Methodology: Object-Oriented Design (OOD)
-* Modeling Tool: UML Class Diagram
-* Version Control: Git & GitHub
-
----
-
 ## 📂 Project Structure
 
 ```
@@ -73,28 +64,7 @@ TrackMySpend/
 
 ---
 
-## 📖 How to Run the Project
 
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/TrackMySpend.git
-   ```
-2. Open the project in your IDE
-3. Run the main application file
-4. Follow on-screen instructions to manage expenses
-
----
-
-## 🔮 Future Enhancements
-
-* User authentication
-* Monthly and yearly expense reports
-* Graphical visualization of spending
-* Database integration
-* Mobile or web-based interface
-
----
 
 ## 📜 License
 
