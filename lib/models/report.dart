@@ -8,7 +8,7 @@ class Report {
   double totalExpense;
   double balance;
 
-  // Relationship: Report summarizes many transactions
+  // Relationship Report summarizes many transactions
   List<Transaction> transactions = [];
 
   Report({
