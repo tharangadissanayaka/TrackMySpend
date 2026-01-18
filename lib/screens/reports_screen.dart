@@ -68,9 +68,6 @@ class _ReportsScreenState extends State<ReportsScreen> {
     );
   }
 
-  // =========================
-  //  CHART CARD
-  // =========================
   Widget _chartCard({
     required String title,
     required List<Map<String, dynamic>> data,
@@ -117,9 +114,6 @@ class _ReportsScreenState extends State<ReportsScreen> {
     );
   }
 
-  // =========================
-  //  PIE SECTIONS
-  // =========================
   List<PieChartSectionData> _buildSections(
       List<Map<String, dynamic>> data) {
     final total = data.fold<double>(
@@ -142,9 +136,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
     }).toList();
   }
 
-  // =========================
-  // LEGEND
-  // =========================
+ 
   Widget _legend(List<Map<String, dynamic>> data) {
     return Column(
       children: data.map((item) {
@@ -173,9 +165,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
     );
   }
 
-  // =========================
-  //  COLOR HELPER
-  // =========================
+ 
   Color _hexToColor(String hex) {
     return Color(int.parse(hex.substring(1), radix: 16) + 0xFF000000);
   }

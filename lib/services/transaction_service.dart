@@ -7,9 +7,7 @@ class TransactionService {
       FirebaseFirestore.instance;
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  /* =========================
-     🔹 GET TRANSACTIONS
-     ========================= */
+
   static Future<List<model.Transaction>> getTransactions({
     int limit = 20,
     String? type,
@@ -45,7 +43,7 @@ class TransactionService {
       );
     }).toList();
 
-    // 🔹 Optional filters (safe, no index errors)
+  
     if (type != null) {
       transactions =
           transactions.where((t) => t.type == type).toList();
@@ -64,9 +62,7 @@ class TransactionService {
     return transactions;
   }
 
-  /* =========================
-     🔹 CREATE TRANSACTION
-     ========================= */
+ 
   static Future<void> createTransaction(
       model.Transaction transaction) async {
     final user = _auth.currentUser;
@@ -82,16 +78,12 @@ class TransactionService {
       'notes': transaction.notes,
       'tags': transaction.tags,
       'date': Timestamp.fromDate(transaction.date),
-      // Store category info for reporting and querying
       'categoryId': transaction.category?.id,
       'categoryName': transaction.category?.name,
       'createdAt': FieldValue.serverTimestamp(),
     });
   }
 
-  /* =========================
-     🔹 UPDATE TRANSACTION
-     ========================= */
   static Future<void> updateTransaction(
       String id, model.Transaction transaction) async {
     await _firestore.collection('transactions').doc(id).update({
@@ -108,9 +100,6 @@ class TransactionService {
     });
   }
 
-  /* =========================
-     🔹 DELETE TRANSACTION
-     ========================= */
   static Future<void> deleteTransaction(String id) async {
     await _firestore.collection('transactions').doc(id).delete();
   }

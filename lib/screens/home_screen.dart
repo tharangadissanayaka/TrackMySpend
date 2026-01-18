@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Map<String, dynamic> summary = {};
   bool isLoading = true;
 
-  // ---------------- INIT ----------------
+ 
   @override
   void initState() {
     super.initState();
@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
   });
   }
 
-  // ---------------- LOAD DATA ----------------
+ 
   Future<void> _loadData() async {
     if (!mounted) return;
 
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  // ---------------- LOGOUT ----------------
+  
   Future<void> _logout() async {
     await AuthService.logout();
     if (!mounted) return;
@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ---------------- UI ----------------
+  
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
@@ -140,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ---------------- BALANCE CARD ----------------
+ 
   Widget _buildBalanceCard(
       double balance, double income, double expenses) {
     return Container(
@@ -192,7 +192,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ---------------- QUICK ACTIONS ----------------
   Widget _buildQuickActions() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -216,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
 
-                    // ✅ ALWAYS reload when returning
+                   
                     _loadData();
                 },
 
@@ -266,7 +265,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ---------------- RECENT TRANSACTIONS ----------------
   Widget _buildRecentTransactions() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -331,7 +329,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // ---------------- BOTTOM NAV ----------------
+ 
   Widget _buildBottomNavigationBar() {
     return BottomNavigationBar(
       backgroundColor: const Color.fromARGB(255, 5, 5, 5),

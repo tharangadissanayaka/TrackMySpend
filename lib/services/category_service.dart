@@ -5,7 +5,7 @@ import 'api_service.dart';
 class CategoryService {
   static final FirebaseFirestore _db = ApiService.db;
 
-  // GET ALL CATEGORIES (OPTIONAL FILTER BY TYPE)
+  
   static Future<List<Category>> getCategories({String? type}) async {
     final userId = ApiService.currentUserId;
 
@@ -74,7 +74,7 @@ class CategoryService {
     return combined.values.toList();
   }
 
-  // CREATE NEW CATEGORY
+  
   static Future<Category> createCategory(Category category) async {
     final userId = ApiService.currentUserId;
     if (userId == null) {
@@ -96,7 +96,7 @@ class CategoryService {
     );
   }
 
-  // GET CATEGORY  ID
+ 
   static Future<Category> getCategory(String id) async {
     final doc = await _db.collection('categories').doc(id).get();
 
@@ -110,7 +110,7 @@ class CategoryService {
     });
   }
 
-  // UPDATE CATEGORY
+ 
   static Future<Category> updateCategory(String id, Category category) async {
     await _db.collection('categories').doc(id).update({
       ...category.toJson(),
@@ -126,7 +126,7 @@ class CategoryService {
     );
   }
 
-  // DELETE CATEGORY
+  
   static Future<void> deleteCategory(String id) async {
     await _db.collection('categories').doc(id).delete();
   }

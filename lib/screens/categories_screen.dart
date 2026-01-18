@@ -16,7 +16,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
   List<Category> _expenseCategories = [];
   bool _isLoading = true;
 
-  // Available icons for categorie
+  
   final List<String> _availableIcons = [
     '💼', '💻', '📈', '🎁', '🏆', '💰', '📊', '🎯',
     '🍔', '🚗', '🛍️', '📄', '🎬', '🏥', '📚', '✈️',
@@ -24,7 +24,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
     '🏋️', '💊', '🐕', '🎨', '📺', '☕', '🍕', '🎂'
   ];
 
-  // Available colors for categories
+ 
   final List<Color> _availableColors = [
     Colors.red, Colors.green, Colors.blue, Colors.orange,
     Colors.purple, Colors.teal, Colors.pink, Colors.brown,
@@ -86,7 +86,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Category Name
+                
                 TextField(
                   controller: nameController,
                   decoration: const InputDecoration(
@@ -96,7 +96,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                 ),
                 const SizedBox(height: 16),
 
-                // Category Type
+              
                 const Text('Type', style: TextStyle(fontWeight: FontWeight.w600)),
                 const SizedBox(height: 8),
                 Row(
@@ -125,7 +125,6 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                 ),
                 const SizedBox(height: 16),
 
-                // Icon Selection
                 const Text('Icon', style: TextStyle(fontWeight: FontWeight.w600)),
                 const SizedBox(height: 8),
                 Container(
@@ -169,7 +168,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                 ),
                 const SizedBox(height: 16),
 
-                // Color Selection
+              
                 const Text('Color', style: TextStyle(fontWeight: FontWeight.w600)),
                 const SizedBox(height: 8),
                 Wrap(

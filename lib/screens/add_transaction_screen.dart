@@ -45,7 +45,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     '#e91e63',
   ];
 
-  // ---------------- INIT ----------------
+ 
   @override
   void initState() {
     super.initState();
@@ -61,7 +61,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     super.dispose();
   }
 
-  // ---------------- LOAD CATEGORIES ----------------
+ 
   Future<void> _loadCategories() async {
     setState(() => _isLoadingCategories = true);
 
@@ -83,7 +83,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     }
   }
 
-  // ---------------- ADD CATEGORY ----------------
+ 
   Future<void> _addNewCategory() async {
     final controller = TextEditingController();
 
@@ -130,7 +130,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     });
   }
 
-  // ---------------- SAVE TRANSACTION ----------------
+ 
   Future<void> _saveTransaction() async {
   if (!_formKey.currentState!.validate()) return;
 
@@ -159,7 +159,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
 
     if (!mounted) return;
 
-    // ✅ SUCCESS MESSAGE
+   
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('Transaction added successfully'),
@@ -168,7 +168,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
       ),
     );
 
-    // ✅ CLEAR FORM (keep type & category)
+    
     _formKey.currentState!.reset();
     _amountController.clear();
     _descriptionController.clear();
@@ -181,7 +181,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   } catch (e) {
     if (!mounted) return;
 
-    // ❌ ERROR MESSAGE
+    
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Failed to add transaction'),
@@ -193,7 +193,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
   }
 }
 
-  // ---------------- UI ----------------
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -215,7 +214,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // ---------- TYPE TOGGLE ----------
+                   
                     Row(
                       children: [
                         _typeButton(
@@ -305,7 +304,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
     );
   }
 
-  // ---------------- HELPERS ----------------
+
   Widget _typeButton(String type, IconData icon, Color color) {
     final selected = _selectedType == type;
 
@@ -319,7 +318,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
             _selectedCategory = null;
           });
 
-          _loadCategories(); // 🔑 THIS IS THE FIX
+          _loadCategories(); 
         },
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 14),
