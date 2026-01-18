@@ -5,12 +5,11 @@ class Transaction {
   String id;
   DateTime date;
   double amount;
-  String type; // "income" or "expense"
+  String type; 
   String description;
   String? notes;
   List<String> tags;
 
-  // Relationship: belongs to one Category
   Category? category;
 
   Transaction({
@@ -24,9 +23,7 @@ class Transaction {
     this.category,
   });
 
-  /* =========================
-     🔹 FROM FIRESTORE
-     ========================= */
+ 
   factory Transaction.fromFirestore(DocumentSnapshot doc) {
     final data = doc.data() as Map<String, dynamic>;
 
@@ -44,9 +41,7 @@ class Transaction {
     );
   }
 
-  /* =========================
-     🔹 TO FIRESTORE
-     ========================= */
+ 
   Map<String, dynamic> toJson() {
     return {
       'amount': amount,
@@ -60,9 +55,7 @@ class Transaction {
     };
   }
 
-  /* =========================
-     🔹 OPTIONAL HELPERS
-     ========================= */
+ 
   void addTransaction() {
     print("Transaction $id added.");
   }
