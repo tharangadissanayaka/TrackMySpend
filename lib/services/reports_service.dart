@@ -1,167 +1,4 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 
-// class ReportService {
-//   static final _firestore = FirebaseFirestore.instance;
-//   static final _auth = FirebaseAuth.instance;
-
-//   /// Get financial summary
-//   static Future<Map<String, dynamic>> getSummary({
-//     DateTime? startDate,
-//     DateTime? endDate,
-//   }) async {
-//     final user = _auth.currentUser;
-//     if (user == null) return {'summary': {'totalIncome': 0.0, 'totalExpenses': 0.0, 'balance': 0.0}};
-
-//     try {
-//       final snapshot = await _firestore
-//           .collection('transactions')
-//           .where('userId', isEqualTo: user.uid)
-//           .get();
-
-//       // ignore: avoid_print
-//       print('getSummary: fetched ${snapshot.docs.length} docs for uid=${user.uid}');
-
-//       double totalIncome = 0;
-//       double totalExpenses = 0;
-
-//       for (final doc in snapshot.docs) {
-//         final data = doc.data() as Map<String, dynamic>;
-//         final amountRaw = data['amount'];
-//         final amount = amountRaw is num
-//             ? amountRaw.toDouble()
-//             : double.tryParse(amountRaw?.toString() ?? '0') ?? 0.0;
-
-//         final ts = data['date'];
-//         final date = ts is Timestamp ? ts.toDate() : null;
-//         if (startDate != null && date != null && date.isBefore(startDate)) continue;
-//         if (endDate != null && date != null && date.isAfter(endDate)) continue;
-
-//         final type = (data['type'] ?? '').toString().toLowerCase();
-//         if (type == 'income') {
-//           totalIncome += amount;
-//         } else {
-//           totalExpenses += amount;
-//         }
-//       }
-
-//       return {
-//         'summary': {
-//           'totalIncome': totalIncome,
-//           'totalExpenses': totalExpenses,
-//           'balance': totalIncome - totalExpenses,
-//         },
-//       };
-//     } catch (e) {
-//       // ignore: avoid_print
-//       print('getSummary: error fetching summary: $e');
-//       return {
-//         'summary': {
-//           'totalIncome': 0.0,
-//           'totalExpenses': 0.0,
-//           'balance': 0.0,
-//         },
-//       };
-//     }
-//   }
-
-//   /// Get monthly financial report
-//   static Future<Map<String, dynamic>> getMonthlyReport({int? year}) async {
-//     final selectedYear = year ?? DateTime.now().year;
-//     final user = _auth.currentUser;
-//     if (user == null) return {'year': selectedYear, 'income': {}, 'expenses': {}};
-
-//     Map<int, double> monthlyIncome = {};
-//     Map<int, double> monthlyExpenses = {};
-
-//     try {
-//       final snapshot = await _firestore
-//           .collection('transactions')
-//           .where('userId', isEqualTo: user.uid)
-//           .get();
-
-//       for (final doc in snapshot.docs) {
-//         final data = doc.data();
-//         final date = (data['date'] as Timestamp).toDate();
-
-//         if (date.year != selectedYear) continue;
-
-//         final month = date.month;
-//         final amount = (data['amount'] as num).toDouble();
-
-//         if ((data['type'] ?? '').toString().toLowerCase() == 'income') {
-//           monthlyIncome[month] = (monthlyIncome[month] ?? 0) + amount;
-//         } else {
-//           monthlyExpenses[month] = (monthlyExpenses[month] ?? 0) + amount;
-//         }
-//       }
-//     } catch (e) {
-//       // ignore: avoid_print
-//       print('getMonthlyReport: error fetching monthly data: $e');
-//     }
-
-//     return {
-//       'year': selectedYear,
-//       'income': monthlyIncome,
-//       'expenses': monthlyExpenses,
-//     };
-//   }
-
-//   /// Get top spending categories
-//   static Future<Map<String, dynamic>> getTopCategories({
-//     DateTime? startDate,
-//     DateTime? endDate,
-//     String type = 'expense',
-//     int limit = 5,
-//   }) async {
-//     final user = _auth.currentUser;
-//     if (user == null) return {'categories': []};
-
-//     try {
-//       final snapshot = await _firestore
-//           .collection('transactions')
-//           .where('userId', isEqualTo: user.uid)
-//           .get();
-
-//       final Map<String, double> categoryTotals = {};
-
-//     for (final doc in snapshot.docs) {
-//   final data = doc.data() as Map<String, dynamic>;
-
-//   final category = data['categoryName'] as String? ?? 'Unknown';
-//   final amount = (data['amount'] as num?)?.toDouble() ?? 0.0;
-
-//   // Client-side filters to avoid index requirements
-//   final ts = data['date'];
-//   final date = ts is Timestamp ? ts.toDate() : null;
-//   if ((data['type'] ?? '').toString().toLowerCase() != type.toLowerCase()) continue;
-//   if (startDate != null && date != null && date.isBefore(startDate)) continue;
-//   if (endDate != null && date != null && date.isAfter(endDate)) continue;
-
-//   categoryTotals[category] =
-//       (categoryTotals[category] ?? 0) + amount;
-// }
-
-
-//       final sortedCategories = categoryTotals.entries.toList()
-//         ..sort((a, b) => b.value.compareTo(a.value));
-
-//       return {
-//         'categories': sortedCategories
-//             .take(limit)
-//             .map((e) => {
-//                   'category': e.key,
-//                   'amount': e.value,
-//                 })
-//             .toList(),
-//       };
-//     } catch (e) {
-//       // ignore: avoid_print
-//       print('getTopCategories: error fetching categories: $e');
-//       return {'categories': []};
-//     }
-//   }
-// }
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -170,9 +7,7 @@ class ReportService {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   static final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  /// =========================
-  /// 🔹 SUMMARY (Income / Expense / Balance)
-  /// =========================
+  
   static Future<Map<String, dynamic>> getSummary({
     DateTime? startDate,
     DateTime? endDate,
@@ -235,9 +70,6 @@ class ReportService {
     }
   }
 
-  /// =========================
-  ///  TOP EXPENSE CATEGORIES
-  /// =========================
   static Future<List<Map<String, dynamic>>> getTopCategories({
     DateTime? startDate,
     DateTime? endDate,
@@ -285,9 +117,7 @@ class ReportService {
     }
   }
 
-  /// =========================
-  ///  MONTHLY REPORT
-  /// =========================
+  
   static Future<Map<String, Map<int, double>>> getMonthlyReport({
     int? year,
   }) async {
@@ -331,9 +161,9 @@ class ReportService {
     };
   }
 
-  /// CATEGORY-WISE TOTALS (income / expense)
+ 
   static Future<List<Map<String, dynamic>>> getCategoryTotals({
-    required String type, // 'income' or 'expense'
+    required String type, 
   }) async {
     final user = _auth.currentUser;
     if (user == null) return [];
