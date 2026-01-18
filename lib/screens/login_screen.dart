@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // App logo/title
+                      // App logo,title
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(

@@ -87,7 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // App logo/title
+                      // App logo,title
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(

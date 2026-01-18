@@ -6,7 +6,7 @@ class User {
   String email;
   Map<String, dynamic> preferences;
 
-  // Relationship: User can generate many reports
+  // Relationship User can generate many reports
   List<Report> reports = [];
 
   User({
