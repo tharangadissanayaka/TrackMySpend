@@ -74,22 +74,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // App logo,title
+                      // App logo/title
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: Colors.blue.shade50,
+                          color: Color.fromARGB(255, 15, 211, 165).withOpacity(0.1),
                           shape: BoxShape.circle,
                         ),
                         child: Icon(
                           Icons.account_balance_wallet,
                           size: 48,
-                          color: Colors.blue.shade600,
+                          color: Color.fromARGB(255, 15, 211, 165),
                         ),
                       ),
                       const SizedBox(height: 24),
                       Text(
-                        'Welcome Back!',
+                        'Welcome to TrackMySpend!',
                         style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                           color: Colors.grey[800],
@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Sign in to continue to Expense Tracker',
+                        'Sign in to continue to TrackMySpend',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           color: Colors.grey[600],
                         ),
@@ -168,7 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: ElevatedButton(
                           onPressed: _isLoading ? null : _login,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.blue.shade600,
+                            backgroundColor: Color.fromARGB(255, 15, 211, 165),
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(

@@ -87,7 +87,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // App logo,title
+                      // App logo/title
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
@@ -97,7 +97,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: Icon(
                           Icons.person_add,
                           size: 48,
-                          color: Colors.green.shade600,
+                          color: Color.fromARGB(255, 15, 211, 165),
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -238,7 +238,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: ElevatedButton(
                           onPressed: _isLoading ? null : _register,
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.green.shade600,
+                            backgroundColor: Color.fromARGB(255, 15, 211, 165),
                             foregroundColor: Colors.white,
                             padding: const EdgeInsets.symmetric(vertical: 16),
                             shape: RoundedRectangleBorder(
