@@ -1,12 +1,12 @@
 class Category {
   String id;
   String name;
-  String type; // e.g., "income" or "expense"
+  String type; // e.g. "income" or "expense"
   String icon;
   String color;
   bool isDefault;
 
-  // Relationship: can have many transactions
+  // Relationship can have many transactions
   List<String> transactionIds = [];
 
   Category({

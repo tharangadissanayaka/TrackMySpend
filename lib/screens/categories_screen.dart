@@ -16,7 +16,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
   List<Category> _expenseCategories = [];
   bool _isLoading = true;
 
-  // Available icons for categories
+  // Available icons for categorie
   final List<String> _availableIcons = [
     '💼', '💻', '📈', '🎁', '🏆', '💰', '📊', '🎯',
     '🍔', '🚗', '🛍️', '📄', '🎬', '🏥', '📚', '✈️',
@@ -313,8 +313,8 @@ class _CategoriesScreenState extends State<CategoriesScreen>
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
         title: const Text('Categories'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black87,
+        backgroundColor: const Color.fromARGB(255, 23, 22, 22),
+        foregroundColor: const Color.fromARGB(221, 235, 231, 231),
         elevation: 1,
         bottom: TabBar(
           controller: _tabController,
@@ -322,9 +322,9 @@ class _CategoriesScreenState extends State<CategoriesScreen>
             Tab(text: 'Income'),
             Tab(text: 'Expense'),
           ],
-          labelColor: Colors.green,
+          labelColor: Color.fromARGB(255, 15, 211, 165),
           unselectedLabelColor: Colors.grey,
-          indicatorColor: Colors.green,
+          indicatorColor: Color.fromARGB(255, 15, 211, 165),
         ),
       ),
       body: _isLoading
@@ -336,11 +336,6 @@ class _CategoriesScreenState extends State<CategoriesScreen>
                 _buildCategoryList(_expenseCategories, 'expense'),
               ],
             ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _showAddCategoryDialog(),
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.add, color: Colors.white),
-      ),
     );
   }
 
@@ -353,7 +348,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
             Icon(
               Icons.category,
               size: 64,
-              color: Colors.grey.shade400,
+              color: Color.fromARGB(255, 15, 211, 165),
             ),
             const SizedBox(height: 16),
             Text(
@@ -445,54 +440,10 @@ class _CategoriesScreenState extends State<CategoriesScreen>
             fontSize: 14,
           ),
         ),
-        trailing: category.isDefault 
-            ? Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: Text(
-                  'Default',
-                  style: TextStyle(
-                    color: Colors.blue.shade700,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              )
-            : PopupMenuButton<String>(
-                onSelected: (value) {
-                  if (value == 'edit') {
-                    _showAddCategoryDialog(editCategory: category);
-                  } else if (value == 'delete') {
-                    _deleteCategory(category);
-                  }
-                },
-                itemBuilder: (context) => [
-                  const PopupMenuItem(
-                    value: 'edit',
-                    child: Row(
-                      children: [
-                        Icon(Icons.edit, size: 20),
-                        SizedBox(width: 8),
-                        Text('Edit'),
-                      ],
-                    ),
-                  ),
-                  const PopupMenuItem(
-                    value: 'delete',
-                    child: Row(
-                      children: [
-                        Icon(Icons.delete, color: Colors.red, size: 20),
-                        SizedBox(width: 8),
-                        Text('Delete', style: TextStyle(color: Colors.red)),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+        trailing: null,
       ),
+            
+      
     );
   }
 }
